@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mux.livedemo.MainActivity"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:layout_above="@+id/actionBar"/>
+
+    <LinearLayout
+        android:id="@+id/actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/recoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Record"/>
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Stop"/>
+        <Button
+            android:id="@+id/captureButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Snapshot"/>
+    </LinearLayout>
+
+</RelativeLayout>
