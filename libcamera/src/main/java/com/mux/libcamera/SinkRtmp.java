@@ -79,7 +79,7 @@ public class SinkRtmp implements Encoder.ISink, RtmpHandler.RtmpListener {
         } else {
             audioQueueSize++;
         }
-        if (frame != null && videoQueueSize < 30) {
+        if (frame != null && videoQueueSize < 30 && audioQueueSize < 200) {
             rtmpHandler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -95,6 +95,12 @@ public class SinkRtmp implements Encoder.ISink, RtmpHandler.RtmpListener {
                     muxer.releaseFrame(frame);
                 }
             });
+        } else {
+            if (isVideo) {
+                videoQueueSize--;
+            } else {
+                audioQueueSize--;
+            }
         }
         Log.v(TAG,
                 String.format("queue size, video=%d, audio=%d", videoQueueSize, audioQueueSize));
