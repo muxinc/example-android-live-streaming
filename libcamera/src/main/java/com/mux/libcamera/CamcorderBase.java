@@ -8,6 +8,7 @@ import android.hardware.camera2.CameraManager;
 import android.util.Size;
 import android.view.Surface;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.mux.libcamera.encoders.Encoder;
 
@@ -59,9 +60,13 @@ public abstract class CamcorderBase {
 
     public abstract View getPreview();
 
-    public abstract void startRecord(String streamKey) throws IOException;
+    public void startRecord(Activity activity, String streamKey) throws IOException {
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    }
 
-    public abstract void stopRecord();
+    public void stopRecord(Activity activity) {
+        activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+    }
 
     public void pauseRecord(boolean pause) {
         if (videoEncoder != null) {

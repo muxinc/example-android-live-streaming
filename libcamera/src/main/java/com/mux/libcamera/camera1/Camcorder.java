@@ -113,7 +113,8 @@ public class Camcorder extends CamcorderBase {
     }
 
     @Override
-    public void startRecord(String streamKey) throws IOException {
+    public void startRecord(Activity activity, String streamKey) throws IOException {
+        super.startRecord(activity, streamKey);
         Size capturedSize = supportedCaptureSizes.get(captureSizeIndex);
         if (captureRotation == 90 || captureRotation == 270)
             capturedSize = new Size(capturedSize.getHeight(), capturedSize.getWidth());
@@ -130,7 +131,8 @@ public class Camcorder extends CamcorderBase {
     }
     
     @Override
-    public void stopRecord() {
+    public void stopRecord(Activity activity) {
+        super.stopRecord(activity);
         cameraPreview.stop();
         audioEncoder.stop();
         mSink.close();

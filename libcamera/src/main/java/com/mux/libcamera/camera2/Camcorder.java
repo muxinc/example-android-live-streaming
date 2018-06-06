@@ -35,7 +35,8 @@ public class Camcorder extends CamcorderBase {
     private Encoder.ISink mSink;
 
     @Override
-    public void startRecord(String streamKey) throws IOException {
+    public void startRecord(Activity activity, String streamKey) throws IOException {
+        super.startRecord(activity, streamKey);
         Size capturedSize = supportedCaptureSizes.get(captureSizeIndex);
         videoEncoder = new EncoderVideoH264(capturedSize, true);
         audioEncoder = new EncoderAudioAAC(EncoderAudioAAC.SupportedSampleRate[7],
@@ -51,7 +52,8 @@ public class Camcorder extends CamcorderBase {
     }
 
     @Override
-    public void stopRecord() {
+    public void stopRecord(Activity activity) {
+        super.stopRecord(activity);
         cameraPreview.stop();
         audioEncoder.stop();
         mSink.close();

@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    camera.startRecord("d27162fa-f8db-663a-101c-ed64e9696e54");
+                    camera.startRecord(MainActivity.this, "d27162fa-f8db-663a-101c-ed64e9696e54");
                     Button btn = findViewById(R.id.recoButton);
                     btn.setEnabled(false);
                     btn = findViewById(R.id.stopButton);
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                camera.stopRecord();
+                camera.stopRecord(MainActivity.this);
                 Button btn = findViewById(R.id.recoButton);
                 btn.setEnabled(true);
                 btn = findViewById(R.id.stopButton);
@@ -60,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
                 camera.takeSnapshot();
             }
         });
-
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     private static final int REQUEST_VIDEO_PERMISSIONS = 1;
