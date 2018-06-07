@@ -6,6 +6,7 @@ import android.media.MediaCodecInfo;
 import android.util.Size;
 import android.view.View;
 
+import com.github.faucamp.simplertmp.RtmpHandler;
 import com.mux.libcamera.CamcorderBase;
 import com.mux.libcamera.SinkRtmp;
 import com.mux.libcamera.encoders.Encoder;
@@ -35,8 +36,8 @@ public class Camcorder extends CamcorderBase {
     private Encoder.ISink mSink;
 
     @Override
-    public void startRecord(Activity activity, String streamKey) throws IOException {
-        super.startRecord(activity, streamKey);
+    public void startRecord(Activity activity, String streamKey, RtmpHandler.RtmpListener listener) throws IOException {
+        super.startRecord(activity, streamKey, listener);
         Size capturedSize = supportedCaptureSizes.get(captureSizeIndex);
         videoEncoder = new EncoderVideoH264(capturedSize, true);
         audioEncoder = new EncoderAudioAAC(EncoderAudioAAC.SupportedSampleRate[7],
@@ -44,7 +45,7 @@ public class Camcorder extends CamcorderBase {
                 EncoderAudioAAC.SupportBitRate[2]);
         //mSink = new SinkMp4Muxer("test.mp4", 2);
         //mSink = new SinkRtmp("rtmp://192.168.1.253:1935/live/camera.stream", capturedSize);
-        mSink = new SinkRtmp("rtmp://live-staging.mux.com/mux/" + streamKey, capturedSize);
+        mSink = new SinkRtmp("rtmp://live-staging.mux.com/mux/" + streamKey, capturedSize, listener);
         videoEncoder.setSink(mSink);
         audioEncoder.setSink(mSink);
         audioEncoder.start();

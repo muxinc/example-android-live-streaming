@@ -9,6 +9,7 @@ import android.util.Size;
 import android.view.Surface;
 import android.view.View;
 
+import com.github.faucamp.simplertmp.RtmpHandler;
 import com.mux.libcamera.CamcorderBase;
 import com.mux.libcamera.SinkRtmp;
 import com.mux.libcamera.encoders.Encoder;
@@ -113,8 +114,8 @@ public class Camcorder extends CamcorderBase {
     }
 
     @Override
-    public void startRecord(Activity activity, String streamKey) throws IOException {
-        super.startRecord(activity, streamKey);
+    public void startRecord(Activity activity, String streamKey, RtmpHandler.RtmpListener listener) throws IOException {
+        super.startRecord(activity, streamKey, listener);
         Size capturedSize = supportedCaptureSizes.get(captureSizeIndex);
         if (captureRotation == 90 || captureRotation == 270)
             capturedSize = new Size(capturedSize.getHeight(), capturedSize.getWidth());
@@ -122,7 +123,7 @@ public class Camcorder extends CamcorderBase {
         audioEncoder = new EncoderAudioAAC(EncoderAudioAAC.SupportedSampleRate[7],
                 MediaCodecInfo.CodecProfileLevel.AACObjectLC,
                 EncoderAudioAAC.SupportBitRate[2]);
-        mSink = new SinkRtmp("rtmp://live-staging.mux.com/mux/" + streamKey, capturedSize);
+        mSink = new SinkRtmp("rtmp://live-staging.mux.com/mux/" + streamKey, capturedSize, listener);
         //mSink = new SinkMp4Muxer("test.mp4", 1);
         videoEncoder.setSink(mSink);
         audioEncoder.setSink(mSink);

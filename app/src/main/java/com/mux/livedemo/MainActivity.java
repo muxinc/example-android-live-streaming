@@ -14,11 +14,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.github.faucamp.simplertmp.RtmpHandler;
 import com.mux.libcamera.CamcorderBase;
 
+import java.io.IOException;
+import java.net.SocketException;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RtmpHandler.RtmpListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    camera.startRecord(MainActivity.this, "d27162fa-f8db-663a-101c-ed64e9696e54");
+                    camera.startRecord(MainActivity.this,
+                            "d27162fa-f8db-663a-101c-ed64e9696e54",
+                            MainActivity.this);
                     Button btn = findViewById(R.id.recoButton);
                     btn.setEnabled(false);
                     btn = findViewById(R.id.stopButton);
@@ -194,5 +199,70 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    @Override
+    public void onRtmpConnecting(String msg) {
+
+    }
+
+    @Override
+    public void onRtmpConnected(String msg) {
+
+    }
+
+    @Override
+    public void onRtmpVideoStreaming() {
+
+    }
+
+    @Override
+    public void onRtmpAudioStreaming() {
+
+    }
+
+    @Override
+    public void onRtmpStopped() {
+
+    }
+
+    @Override
+    public void onRtmpDisconnected() {
+
+    }
+
+    @Override
+    public void onRtmpVideoFpsChanged(double fps) {
+
+    }
+
+    @Override
+    public void onRtmpVideoBitrateChanged(double bitrate) {
+
+    }
+
+    @Override
+    public void onRtmpAudioBitrateChanged(double bitrate) {
+
+    }
+
+    @Override
+    public void onRtmpSocketException(SocketException e) {
+
+    }
+
+    @Override
+    public void onRtmpIOException(IOException e) {
+
+    }
+
+    @Override
+    public void onRtmpIllegalArgumentException(IllegalArgumentException e) {
+
+    }
+
+    @Override
+    public void onRtmpIllegalStateException(IllegalStateException e) {
+
     }
 }

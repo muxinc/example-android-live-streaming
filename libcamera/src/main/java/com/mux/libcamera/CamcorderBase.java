@@ -10,6 +10,7 @@ import android.view.Surface;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.github.faucamp.simplertmp.RtmpHandler;
 import com.mux.libcamera.encoders.Encoder;
 
 import java.io.IOException;
@@ -60,7 +61,7 @@ public abstract class CamcorderBase {
 
     public abstract View getPreview();
 
-    public void startRecord(Activity activity, String streamKey) throws IOException {
+    public void startRecord(Activity activity, String streamKey, RtmpHandler.RtmpListener listner) throws IOException {
         activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 

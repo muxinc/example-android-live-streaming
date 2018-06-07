@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
 
-public class SinkRtmp implements Encoder.ISink, RtmpHandler.RtmpListener {
+public class SinkRtmp implements Encoder.ISink {
     private final static String TAG = "rtmpSink";
     private DefaultRtmpPublisher publisher;
     private HandlerThread rtmpThread;
@@ -25,8 +25,8 @@ public class SinkRtmp implements Encoder.ISink, RtmpHandler.RtmpListener {
     private SrsFlvMuxer muxer = new SrsFlvMuxer();
     private boolean audioTrackInited = false, videoTrackInited = false;
 
-    public SinkRtmp(final String url, final Size videoSize) {
-        RtmpHandler handler = new RtmpHandler(this);
+    public SinkRtmp(final String url, final Size videoSize, RtmpHandler.RtmpListener listener) {
+        RtmpHandler handler = new RtmpHandler(listener);
         publisher = new DefaultRtmpPublisher(handler);
         rtmpThread = new HandlerThread("rtmpThread");
         rtmpThread.start();
@@ -104,70 +104,5 @@ public class SinkRtmp implements Encoder.ISink, RtmpHandler.RtmpListener {
         }
         Log.v(TAG,
                 String.format("queue size, video=%d, audio=%d", videoQueueSize, audioQueueSize));
-    }
-
-    @Override
-    public void onRtmpConnecting(String msg) {
-
-    }
-
-    @Override
-    public void onRtmpConnected(String msg) {
-
-    }
-
-    @Override
-    public void onRtmpVideoStreaming() {
-
-    }
-
-    @Override
-    public void onRtmpAudioStreaming() {
-
-    }
-
-    @Override
-    public void onRtmpStopped() {
-
-    }
-
-    @Override
-    public void onRtmpDisconnected() {
-
-    }
-
-    @Override
-    public void onRtmpVideoFpsChanged(double fps) {
-
-    }
-
-    @Override
-    public void onRtmpVideoBitrateChanged(double bitrate) {
-
-    }
-
-    @Override
-    public void onRtmpAudioBitrateChanged(double bitrate) {
-
-    }
-
-    @Override
-    public void onRtmpSocketException(SocketException e) {
-
-    }
-
-    @Override
-    public void onRtmpIOException(IOException e) {
-
-    }
-
-    @Override
-    public void onRtmpIllegalArgumentException(IllegalArgumentException e) {
-
-    }
-
-    @Override
-    public void onRtmpIllegalStateException(IllegalStateException e) {
-
     }
 }
