@@ -43,8 +43,6 @@ public class Camcorder extends CamcorderBase {
         audioEncoder = new EncoderAudioAAC(EncoderAudioAAC.SupportedSampleRate[7],
                 MediaCodecInfo.CodecProfileLevel.AACObjectLC,
                 EncoderAudioAAC.SupportBitRate[2]);
-        //mSink = new SinkMp4Muxer("test.mp4", 2);
-        //mSink = new SinkRtmp("rtmp://192.168.1.253:1935/live/camera.stream", capturedSize);
         mSink = new SinkRtmp("rtmp://live.mux.com/app/" + streamKey, capturedSize, listener);
         videoEncoder.setSink(mSink);
         audioEncoder.setSink(mSink);
