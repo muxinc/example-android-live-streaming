@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements RtmpHandler.RtmpL
             if (needDescription) {
                 AlertDialog alertDialog = new AlertDialog.Builder(this).create();
                 alertDialog.setTitle("Permission Detail");
-                alertDialog.setMessage("The app needs the permissions to operator properly");
+                alertDialog.setMessage("The app needs the permissions to operate properly");
                 alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {

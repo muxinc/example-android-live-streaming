@@ -2,49 +2,36 @@
 
 An example app for live streaming from an Android device using the [Mux](http://mux.com) live streaming service, written in Java and C++ [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/muxinc/example-ios-live-streaming/blob/master/LICENSE)
 
-## Welcome
+## Introduction
 
-Our sample app is a simple UI. All the live capture and streaming functionality is encapsulated inside the libcamera module.
+This repo includes two main components:
+- A sample application, located under `/app`, which includes a simple UI to configure and stream your live stream.
+- A lower-level moduled, under `/libcamera`, providing all of the live capture and live streaming functionality.
 
-The libcamera module support the following features
-
-- Support Android Camera 2 API.
-
-- Support capture in landscape or portrait mode
-
-- Support app pause and resume
-
-- Screen stays on while in Capture
-
-- Support configuration on video and audio encoding
-
+The `libcamera` module supports the following features:
+- Integration with [Android's Camera 2 API](https://developer.android.com/reference/android/hardware/camera2/package-summary)
+- Landscape and portrait video capture
+- Application pause and resume
+- Force screen to stay on while capture is active
+- Configuration of video and audio encoding settigns
 - Minimum Android API level 9
 
-The libcamera also encapsulated the following open source libraries
-
-- RTMP network protocol library: com.github.faucamp.simplertmp
-
-- Elementary streams muxing to FLV stream library: com.net.ossrs.yasea
-
-- Color space converter library: libyuv
+The `libcamera` module is built on, and encapsulates, the following third-party libraries:
+- [SimpleRtmp - Client-side RTMP library for Java](https://github.com/faucamp/simplertmp) - com.github.faucamp.simplertmp
+- [Yet Another Stream Encoder for Android](https://github.com/begeekmyfriend/yasea) - com.net.ossrs.yasea
+- Color space conversion: [libyuv](https://chromium.googlesource.com/libyuv/libyuv/)
 
 ## Quick Start
 
-### Sample Project Setup
+Clone this repo locally, and then load the application from the root directory in Android Studio 3.0+.
 
-After clone the source code, use Android Studio 3.0+ to load from the root directory.
+Run the application. There will be buttons at the bottom of the screen to start/stop live capture.
 
 ### Components
 
-- `app` is the demo app
+- `app` contains the demo application
 
-- `libcamera` is the functional module.
-
-### Build and Run.
-
-Run the app. There will be buttons at the bottom of screen to start/stop live capture
-
-
+- `libcamera` is the functional module
 
 ## Documentation
 
