@@ -123,14 +123,14 @@ public class Camcorder extends CamcorderBase {
         audioEncoder = new EncoderAudioAAC(EncoderAudioAAC.SupportedSampleRate[7],
                 MediaCodecInfo.CodecProfileLevel.AACObjectLC,
                 EncoderAudioAAC.SupportBitRate[2]);
-        mSink = new SinkRtmp("rtmp://live-staging.mux.com/mux/" + streamKey, capturedSize, listener);
+        mSink = new SinkRtmp("rtmp://live.mux.com/app/" + streamKey, capturedSize, listener);
         //mSink = new SinkMp4Muxer("test.mp4", 1);
         videoEncoder.setSink(mSink);
         audioEncoder.setSink(mSink);
         audioEncoder.start();
         cameraPreview.startRecording(videoEncoder);
     }
-    
+
     @Override
     public void stopRecord(Activity activity) {
         super.stopRecord(activity);
