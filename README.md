@@ -33,10 +33,6 @@ Run the application. There will be buttons at the bottom of the screen to start/
 
 - `libcamera` is the functional module
 
-## Documentation
-
-You can find [the docs here](https://muxinc.github.io/example-android-live-streaming).
-
 ## Resources
 
 * [Mux](http://mux.com)
