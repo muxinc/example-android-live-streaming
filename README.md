@@ -1,3 +1,7 @@
+# Deprecated
+
+Moving forward, Mux is consolidating examples in a single location: https://github.com/muxinc/examples. See that repo for a an updated Android Live streaming example (based on javacv) that should be simpler.
+
 # example-android-live-streaming
 
 An example app for live streaming from an Android device using the [Mux](http://mux.com) live streaming service, written in Java and C++ [![GitHub license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/muxinc/example-ios-live-streaming/blob/master/LICENSE)
